@@ -13,6 +13,8 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 //common methods
@@ -45,6 +47,13 @@ public class Utils {
 		1) Through inheritance outside the class
        2) make the method as static within the same class.*/
 		
+	}
+	
+	public String getJsonPath(Response response,String key)
+	{
+		  String resp=response.asString();
+		JsonPath   js = new JsonPath(resp);
+		return js.get(key).toString();
 	}
 }
 	
