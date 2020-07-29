@@ -24,22 +24,26 @@ public class Utils {
 	public static RequestSpecification req;
 
 	public RequestSpecification requestSpecification() throws IOException {
+		//if we dont give request as null, then it will override in the logging.txt, so five it as null
 		if(req==null)
 		{
-		PrintStream log =new PrintStream(new FileOutputStream("logging.txt"));
+		PrintStream log =new PrintStream(new FileOutputStream("logginglatestjuly.txt"));
 		//logRequestTo it is a method-log filter is used to log the file, here we are mentioning because for every req(test cases), it will log the file, which is using req.
 		//
-		req = new RequestSpecBuilder().setBaseUri(getGlobalValue("baseUrl")).addQueryParam("key", "qaclick123").addFilter(RequestLoggingFilter.logRequestTo(log)).addFilter(ResponseLoggingFilter.logResponseTo(log))
+		req = new RequestSpecBuilder().setBaseUri(getGlobalValue("baseUrl"))
+				
+				.addQueryParam("key", "qaclick123").addFilter(RequestLoggingFilter.logRequestTo(log)).addFilter(ResponseLoggingFilter.logResponseTo(log))
 				.setContentType(ContentType.JSON).build();
          return req;
 	}
 		return req;
-		
-	}
+}
+	
+	
 	public static String getGlobalValue(String key) throws IOException
 	{
 		Properties prop =new Properties();
-		FileInputStream fis =new FileInputStream("C:\\Users\\rupom\\E2EPROJECT\\APIframework\\src\\test\\java\\resources\\global.properties");
+		FileInputStream fis =new FileInputStream(System.getProperty("user.dir") +"\\src\\test\\java\\resources\\global.properties");
 		prop.load(fis);
 		return prop.getProperty(key);
 	

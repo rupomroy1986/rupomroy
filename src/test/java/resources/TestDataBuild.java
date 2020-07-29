@@ -8,13 +8,13 @@ import POJO.Location;
 
 public class TestDataBuild {
 	
-	public AddPlace addPlacePayLoad(String name, String language, String address )
+	public AddPlace addPlacePayLoad(String name, String language, String address)
 	{
 		AddPlace p =new AddPlace();
 		p.setAccuracy(50);
 		p.setAddress(address);
 		p.setLanguage(language);
-		p.setPhone_number("(+91) 984 893 3937");
+		p.setPhone_number("8197497002");
 		p.setWebsite("https://rahulshettyacademy.com");
 		p.setName(name);
 		List<String> myList =new ArrayList<String>();
@@ -26,7 +26,7 @@ public class TestDataBuild {
 		l.setLat(-38.383494);
 		l.setLng(33.427362);
 		p.setLocation(l);
-		return p;
+		return p; 
 	}
 	public String deletePlacePayload(String placeId)
 	{
